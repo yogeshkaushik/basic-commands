@@ -107,3 +107,7 @@ Read This on levels : http://www.pathbreak.com/blog/ubuntu-startup-init-scripts-
 
 Redis : 
 
+------------------------------------------------------------------------
+
+nGrok : ./ngrok http -host-header=rewrite widgets.shoppr.com:80  //host your apis to the world
+
