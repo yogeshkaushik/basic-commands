@@ -1,0 +1,100 @@
+================>> VIM Basics <<===================
+Reference : vimtutor
+
+0. GENERAL :: 
+	(followings are called motions and can be used with a number,
+		like 4w - this will jump the cursor on 4 words)
+	w,W - moves word by word, (moves to starting of the next word unlike 'e').
+	$ - moves to the end of a line.
+	e - moves to the end of a word.
+	0 - moves to starting of a line.
+
+	u - undo the recent change.
+	U - undo the whole line change.
+	ctrl + R - redo the change.
+
+	p - the put command, pastes whatever is in register below the cursor.
+
+	ctrl+o - takes to the previous position.
+	ctrl+i - takes to the next position.
+
+	(v takes you to the visual mode, use as -> v [number]motion )
+	v 3w - selects 3 words into visual mode.
+
+	(Yank - y)
+	y - yanked, copy selected text into visual mode into the registers.
+	(use it with 'p' to paste the selected content)
+	yy - yank the whole line.
+	yw - yank one word. (can be used as operator such as -> y [number]motion).
+
+	(merge files.)
+	:r file_name - this command copy the content of that file and pastes into
+		the current file below the cusrsor.
+	:r ![command] - executes the command and puts the output below cursor
+
+1. INSERT MODE ::
+	A - append at the end of a line.
+	a - append after the cursor
+	i - insert at the cursor
+
+
+2. DELETE OPERATOR :: (d is operator for deletion, use as -> d [number]motion ),
+NOTE : delete operator keeps deleted stuff in register (memory,cache)
+	x : delete char at cursor.
+	dw,d3w : delete word, 3 words.
+	d$ : deletes till end of the line.
+	dd : deletes the whole line.
+
+3. REPLACE MODE ::
+	r[char] - replaces char at cursor with given char.
+	R - moves into 'replace mode' which overrides chars, words as you move along.
+
+4. CHANGE OPERATOR :: (deletes according to given motion and goes into insert mode)
+use as - c [number]motion
+	cw - delete word (w as motion) and move into insert mode.
+
+5. LOCATION :: 
+	gg - moves to starting of file.
+	G - moves to end of the file.
+	[number]G - moves to that number of file.
+	ctrl + G - tells the status of file and line number of current cusrsor location.
+
+6. SEARCH ::
+	/[phrase] - start search in forward mode.
+		: use "n" to move forward and "N" to move backward
+	?[phrase] - start search in backward mode.
+
+7.SUBSTITUTION ::
+	To substitute new for the first old in a line type    :s/old/new
+	To substitute new for all 'old's on a line type       :s/old/new/g
+	To substitute phrases between two line #'s type       :#,#s/old/new/g
+	To substitute all occurrences in the file type        :%s/old/new/g
+	To ask for confirmation each time add 'c'             :%s/old/new/gc
+
+8.EXTERNAL COMMANDS ::
+	:! [command] - executes the command, like ':! dir'.
+	:w FILENAME - saves the current content (all of it ) into given filename.
+	goToVisualMode,selectSomething,press ':' ( :'<,'> will appear ) and then type command 'w filename'
+	" :'<,'>w FILE_NAME " - this will copy the selected text into that file.
+
+9.OPEN COMMAND ::
+	o - opens a line below cursor (and takes to insert mode).
+	O - opens a line above cursor.
+
+10. SET OPTION ::
+	:set [option] - sets some of the options.
+	:set no[options] - sets negative of that option.
+	Some of the options are :: ic (ignore case while search), hls (hlsearch-highlight search),
+		incsearch (show partial matches for a search phrase)
+	Example -> :set ic, :set hls, :set noic.
+
+
+
+** Command line completion with CTRL-D and <TAB> **
+- Press  CTRL-D  and Vim will show a list of commands that start with "e".
+- Press <TAB>  and Vim will complete the command name to ":edit".
+
+Some Useful LINKS :
+
+http://www.oualline.com/vim/10/top_10.html
+http://www.oualline.com/vim/10/vimrc.html

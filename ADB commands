@@ -1,0 +1,44 @@
+connect to device ::-------->  ./adb shell
+
+Referrer Test ::---------> am broadcast -a com.android.vending.INSTALL_REFERRER -n com.revemarketing.rafreferralapp/com.revemarketing.revesdk.ReveReferralReceiver --es "referrer" "10042"
+
+Pull and Push
+
+aapt(Android SDK inside build-tools(~/Android/Sdk/build-tools/24.0.1$ ./aapt)) (usefull to unzip and peak into apk) ::-----> http://elinux.org/Android_aapt
+aapt dump xmltree SpareParts.apk AndroidManifest.xml  ======  for manifest
+
+---------------------------------------------Intent (Web To App) ------------------------------------------------------------------
+
+intent://details?id=X&url=Y&referrer=Z#Intent;scheme=market;action=android.intent.action.VIEW;package=com.android.vending;end";
+
+https://developer.chrome.com/multidevice/android/intents
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------GIT-----------------------------------
+
+Kind of website(HTML, static) hosting, basically displaying raw form of file 
+
+http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github
+
+http://stackoverflow.com/questions/6551446/can-i-run-html-files-directly-from-github-instead-of-just-viewing-their-source
+
+------------------------------------------------------------------
+
+
+
+------------------------Creating Small Server(node.js)--------------------------------------------
+
+http://stackoverflow.com/questions/6084360/using-node-js-as-a-simple-web-server
+
+http://stackoverflow.com/questions/16333790/node-js-quick-file-server-static-files-over-http
+
+--------------------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------------------------------

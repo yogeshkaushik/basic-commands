@@ -1,0 +1,109 @@
+-----------------------------------------------------------------------------------------------------------
+
+sudo apt-get purge openjdk-\*    ---   uninstall
+
+dpkg --get-selections   -----   get list of installed programs
+
+-----------------------------------------------------------------------------------------------------------
+
+sudo tar -xvzf jdk-8u111-linux-i586.tar.gz  =====  install tar.gz
+tar -xzvf file.tar.gz
+tar -xjvf file.tar.bz2
+-----------------------------------------------------------------------------------------------------------
+
+(https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux)
+
+ps - e (ps - ef)  ==== to get all the running processes and their PID
+
+kill -TERM(or -15) (-KILL 0r -9) pid  ==== to send signal to process (to kill process by passing the signal
+to OS kernal if process is not taking the signals (ex.  kill -9 firefox(or PID))) , use killall to kill the 
+process tree
+
+AnyCommand | grep searchItem ==== searches and prints only the searchItem
+
+pgrep abcd ==== directly gives you PID of abcd 
+
+top ==== gives you information about running processes and memory spaces.
+
+------------------------------------------------------------------------------------------------------------
+
+lsusb -v  =====  to get all the usb port info
+
+=>>vendorID == for coolpad is  ==== 0x0e8d MediaTek Inc
+
+To register a mobile in rules.d, go to /etc/udev/rules.d/
+add this line--  SUBSYSTEM=="usb", ATTR{idVendor}=="0x04e8", MODE="0666", GROUP="plugdev"
+(Login using sudo -i)
+------------------------------------------------------------------------------------------------------------
+
+wc -l //pipe this command to count line : -m for bits
+
+sudo tcpdump 'tcp port 9494' -v -i lo -A  // '9494' port 'lo' is local 'wlo1' is ethernet, check 'ifconfig' for this 
+sudo tcpdump -A -i lo 'port 9494' // another variation
+
+netstat -nltp // n = numeric as 127.0.0.1 not localhost, l = listening only, t = tcp, p = program..... man netstat
+
+
+netstat -vanp tcpt -vanp tcp
+
+sudo ufw deny 9494 // deny/allow  a particular port
+
+
+java -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5888 -cp .:* TestSocketIO   // start listening for debug.
+
+javac -cp .:* TestSocketIO.java  // specifying classpath
+java -cp .:* TestSocketIO
+
+
+grep -r 'dasdas' ./dir  // grep searches in binary files as well like .jar, .class etc.
+
+
+
+find ./dir -name 'manifest.mf'  // finds manifest.mf files (only files name)
+
+
+ssh -i .ssh/key-location ubuntu(userType:as root,ubuntu)@50.16.203.57(machine ip, public ip)
+
+scp -i ~/.ssh/yogesh-prod-ssh-key lib/TestSocketIO.java ubuntu@23.23.205.74:/tmp/webchatpublic/
+
+
+grep -HIirn "session" .  // another grep variation
+
+
+sudo ln -sf /location/of/file softlinkName
+
+curl -v 
+
+wget
+
+
+
+diff -qr /some/loc/ /another/loc/ | grep -v '.class' | grep -v 'build/' | grep -v '.java' | grep 'Files' | wc -l // pipe chain
+
+
+crontab -e
+
+
+od -c binary/or/hexadecimal/file  //dumps the binary file to readable format to some extent , read man of od
+xxd -b, hexdump -C (similar to od)
+
+objdump                     // Do read : https://unix.stackexchange.com/questions/282215/how-to-view-a-binary-file // EightBitTony's Answer and Pierre-Olivier Vares's answer.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+https://help.ubuntu.com/community/UbuntuBootupHowto || https://askubuntu.com/questions/814/how-to-run-scripts-on-start-up || http://upstart.ubuntu.com/getting-started.html || https://askubuntu.com/questions/228304/how-do-i-run-a-script-at-start-up
+
+create a file in /etc/init.d/ to start it on system start.
+When you provide a file there with run level "update-rc.d myscript defaults", it starts after certain levels. read last link.
+
+Other ways are.... crontab -e (@reboot), add to ~/.config/upstart/whateverYouWant, add to /etc/rc.local || /etc/init/rc.local (start on startup;task;exec /path/to/script;), add file to /etc/init/here (Upstart), add init script to /etc/init.d (Obsolete), 
+
+Read This on levels : http://www.pathbreak.com/blog/ubuntu-startup-init-scripts-runlevels-upstart-jobs-explained
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Redis : 
+
