@@ -1,0 +1,39 @@
+#!/bin/bash
+
+tmux has-session -t "dev"
+
+if [ $? != 0 ]
+then
+
+# -d == detaches the session
+  tmux new-session -s dev -n pServer -d #window No == 0
+
+#Prepare Server
+  tmux send-keys -t dev 'pServer' C-m
+  tmux split-window -v -t dev:0 #new pane, index=1
+  tmux send-keys -t dev:0.1 "cd /home/yogeshk/projects/shopprstream/build" C-m
+  tmux send-keys -t dev:0.1 '^l' C-m
+
+#Prepare mySql
+  tmux new-window -n mySQL -t dev #window==1
+  tmux send-keys -t dev:1 msql C-m
+  tmux send-keys -t dev:1 '^l' C-m
+
+#Prepare Logs
+  tmux new-window -n Logs -t dev #window==2
+  tmux send-keys -t dev:2 "cd /usr/local/taf/applogs" C-m
+  tmux send-keys -t dev:2 '^l' C-m
+  tmux split-window -h -t dev:2 #new pane, index=1
+  tmux send-keys -t dev:2.1 "cd /usr/local/pserver/current/server/nodes/default/logs" C-m
+  tmux send-keys -t dev:2.1 '^l' C-m
+
+#Prepare vHost
+  tmux new-window -n vHost -t dev #window==3
+  tmux send-keys -t dev:3 "cd /usr/local/pserver/current/server/nodes/default/vhosts" C-m
+  tmux send-keys -t dev:3 '^l' C-m
+
+fi
+
+tmux send-keys -t dev:0.0 "" C-m
+tmux attach -t dev
+
